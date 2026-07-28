@@ -1,0 +1,75 @@
+generated: '2026-07-28'
+method: searched
+source: >-
+  https://tps.thetrainline.com/our-products/global-api/, https://tps.thetrainline.com/partner-support/,
+  https://www.thetrainline.com/terms/security, https://www.trainlinegroup.com/
+note: >-
+  Recorded as honest negatives where nothing is published. Trainline operates the Global API as a
+  contracted wholesale product, so its versioning, deprecation and incident communications all live
+  behind the partner relationship rather than on a public surface.
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  published: false
+  evidence: >-
+    No versioning policy, version header, version path or release notes are published anywhere on
+    tps.thetrainline.com. The product page describes the API only as "built on the most up to date
+    tech stack".
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: unknown
+  evidence: No deprecation or sunset policy is published; RFC 8594 support cannot be observed without access.
+status_page:
+  url: null
+  published: false
+  probed:
+    - {url: 'https://status.thetrainline.com', status: '000 (does not resolve)'}
+    - {url: 'https://trainline.statuspage.io', status: '200 but redirects to the Atlassian Statuspage marketing site — not a Trainline page'}
+    - {url: 'https://tps.thetrainline.com/status', status: 404}
+  evidence: >-
+    Trainline publishes no public status page for the Global API or for its consumer services.
+    Incidents are communicated through the partner account/support relationship.
+sla:
+  url: https://www.thetrainline.com/terms/security
+  uptime_target: 99.9%
+  quote: >-
+    "We provide a commitment to our customers that our services will achieve at least 99.9%
+    operational uptime."
+  scope: >-
+    Stated on the consumer security overview page and scoped to "our services". No API-specific,
+    contractual or credit-backed SLA is published for the Global API — partner SLAs, if any, are
+    in the commercial agreement.
+  contractual: false
+onboarding:
+  self_serve: false
+  path: https://tps.thetrainline.com/get-in-touch/
+  average_integration_time: 12 weeks
+  quote: '"our average integration time across our clients is 12 weeks"'
+  additional_gates: >-
+    In Great Britain a third-party retailer also requires Rail Delivery Group / Rail Settlement Plan
+    accreditation and a bond; Trainline states it assists partners with carrier accreditation.
+support:
+  url: https://tps.thetrainline.com/partner-support/
+  model: named single point of contact plus a self-serve partner support portal
+  quote: '"one, central point of contact who can draw on the expertise and guidance of multiple teams"'
+  hours_published: false
+  response_sla_published: false
+  escalation_published: false
+change_communication:
+  api_changelog: null
+  api_changelog_published: false
+  corporate_news:
+    - https://media.trainline.com/
+    - https://www.trainlinegroup.com/
+    - https://tps.thetrainline.com/blog-and-media/
+  note: >-
+    The public feeds are corporate/investor and press communications, not an API changelog. No dated
+    record of Global API changes, additions or breaking changes is published.
+open_data_lifecycle:
+  dataset: https://github.com/trainline-eu/stations
+  cadence: continuously maintained in the open (last commit 2026-07-27)
+  change_record: git history — the only publicly auditable change log Trainline maintains
+  licence: ODbL 1.0
+deprecated_operations: []

@@ -1,0 +1,66 @@
+generated: '2026-07-28'
+method: searched
+source: >-
+  npm registry search (scope:trainline and text:trainline), PyPI, RubyGems, Maven Central,
+  NuGet, pkg.go.dev, Packagist, crates.io, plus github.com/trainline and github.com/trainline-eu
+api_clients:
+  published: false
+  note: >-
+    Trainline ships NO client library, SDK or helper package for the Global API in any registry,
+    in any language. This is consistent with the rest of its API posture: the Global API is sold
+    under commercial agreement with a stated 12-week assisted integration, and whatever tooling
+    partners receive is delivered privately after contract, not published. Searching npm for
+    "trainline" returns only the first-party front-end/infrastructure packages below plus
+    third-party community packages (trainline-stations by juliuste, uk-railway-stations by
+    davwheat) that wrap the ODbL stations dataset — those are NOT Trainline packages and are not
+    listed as such here.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@trainline/react-skeletor"
+    version: 1.0.2
+    url: https://www.npmjs.com/package/@trainline/react-skeletor
+    install: npm install @trainline/react-skeletor
+    repository: https://github.com/trainline/react-skeletor
+    license: Apache-2.0
+    last_published: '2017-11-09'
+    official: true
+    api_client: false
+    purpose: Skeleton loading placeholders for React — front-end library, unrelated to the Global API
+  - language: javascript
+    registry: npm
+    name: "@trainline/webpack-bundle-delta"
+    version: 0.2.0
+    url: https://www.npmjs.com/package/@trainline/webpack-bundle-delta
+    install: npm install @trainline/webpack-bundle-delta
+    repository: https://github.com/trainline/webpack-bundle-delta
+    license: Apache-2.0
+    last_published: '2021-05-04'
+    official: true
+    api_client: false
+    purpose: Reports what changed between two webpack compilations — build tooling, unrelated to the Global API
+  - language: python
+    registry: pypi
+    name: envmgr-cli
+    version: 1.13.2
+    url: https://pypi.org/project/envmgr-cli/
+    install: pip install envmgr-cli
+    repository: https://github.com/trainline/envmgr-cli
+    license: Apache-2.0
+    author: Trainline Platform Development
+    official: true
+    api_client: false
+    archived: true
+    purpose: >-
+      CLI for Trainline's internal Environment Manager (repo archived, project marked DEPRECATED) —
+      an internal infrastructure API, not the Global API
+registries_probed:
+  - {registry: npm, query: 'scope:trainline', official_hits: 2}
+  - {registry: npm, query: 'trainline', api_client_hits: 0}
+  - {registry: pypi, hits: 'envmgr-cli, envmgr (internal tooling only)'}
+  - {registry: rubygems, hits: 'json-api-vanilla is authored by espadrine, not Trainline-owned'}
+  - {registry: maven-central, hits: 0}
+  - {registry: nuget, hits: 0}
+  - {registry: pkg.go.dev, hits: 0}
+  - {registry: packagist, hits: 0}
+  - {registry: crates.io, hits: 0}

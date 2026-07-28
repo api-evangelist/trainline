@@ -1,0 +1,144 @@
+generated: '2026-07-28'
+method: searched
+source: >-
+  https://www.thetrainline.com/terms/security, https://tps.thetrainline.com/our-products/global-api/,
+  https://github.com/trainline-eu/stations
+note: >-
+  Trainline publishes no machine-readable contract for the Global API — no OpenAPI, no Swagger,
+  no GraphQL introspection surface, no AsyncAPI, no MCP server — so nothing below is derived from
+  a specification. Every entry is either a claim Trainline itself publishes in prose, or an
+  identifier/licence standard the ODbL stations dataset provably uses. Where a standard is not
+  claimed and cannot be observed, conforms is false with evidence stating that, not an assumption
+  of non-conformance in the product itself.
+standards:
+  - id: pci-dss-level-1
+    name: PCI DSS Level 1
+    conforms: true
+    evidence: >-
+      "Trainline are PCI Level 1 compliant both as a merchant and as a service provider"
+      (https://www.thetrainline.com/terms/security)
+  - id: iso-27001
+    name: ISO/IEC 27001 Information Security Management
+    conforms: true
+    evidence: certified, certificate number IS 775108 (https://www.thetrainline.com/terms/security)
+  - id: iso-22301
+    name: ISO 22301 Business Continuity Management
+    conforms: true
+    evidence: certified, certificate number BCMS 763415 (https://www.thetrainline.com/terms/security)
+  - id: gdpr
+    name: UK GDPR / EU GDPR
+    conforms: true
+    evidence: >-
+      Published privacy policy, EEA data residency, named DPO mailbox DPO@thetrainline.com
+      (https://www.thetrainline.com/terms/privacy)
+  - id: bsimm
+    name: Building Security In Maturity Model
+    conforms: true
+    evidence: >-
+      "We have a formal software security programme, based on the 'Building Security in Maturity
+      Model' (BSIMM) framework" (https://www.thetrainline.com/terms/security)
+  - id: rest
+    name: REST architectural style
+    conforms: true
+    evidence: >-
+      Self-declared only — "a modern, intuitive RESTful API built on the most up to date tech stack"
+      (https://tps.thetrainline.com/our-products/global-api/). No reference documentation, resource
+      model or media types are published, so the claim cannot be verified.
+  - id: openapi
+    name: OpenAPI Specification
+    conforms: false
+    evidence: >-
+      No OpenAPI/Swagger document at any Trainline host. Probed /openapi.json, /openapi.yaml,
+      /swagger.json, /v1/openapi.json and /api-docs on api.thetrainline.com (401 Basic challenge on
+      every path), tps.thetrainline.com, www.thetrainline.com and www.trainlinegroup.com (404).
+  - id: osdm
+    name: OSDM — Open Sales and Distribution Model (UIC)
+    conforms: false
+    evidence: >-
+      Trainline makes no OSDM claim anywhere on tps.thetrainline.com or trainlinegroup.com, and the
+      Global API is described as a Trainline-proprietary REST contract. Third parties have built
+      OSDM Places API implementations on top of Trainline's open stations dataset
+      (github.com/mainmatter/reStations) — that is downstream reuse of the ODbL data, not a Trainline
+      conformance claim.
+  - id: ndc
+    name: IATA NDC
+    conforms: false
+    applicable: false
+    evidence: NDC is an air-distribution standard; Trainline is a rail and coach retailer.
+  - id: gtfs
+    name: GTFS / GTFS-RT
+    conforms: false
+    evidence: >-
+      Trainline publishes station reference data as CSV under ODbL, not as GTFS feeds. The
+      trainline-eu/gtfs Ruby library exists but is archived and is a consumer of third-party GTFS,
+      not a Trainline GTFS publication.
+  - id: uic-station-codes
+    name: UIC station codes
+    conforms: true
+    evidence: >-
+      stations.csv publishes uic and uic8_sncf columns mapping Trainline station ids to UIC codes
+      (https://github.com/trainline-eu/stations)
+  - id: atoc-crs
+    name: ATOC / CRS station codes (Great Britain)
+    conforms: true
+    evidence: stations.csv publishes atoc_id and atoc_is_enabled columns
+  - id: iso-3166-1-alpha-2
+    name: ISO 3166-1 alpha-2 country codes
+    conforms: true
+    evidence: stations.csv country column is ISO 3166-1 alpha-2
+  - id: iso-639-1
+    name: ISO 639-1 language codes
+    conforms: true
+    evidence: stations.csv info:<lang> columns are keyed by ISO 639-1 code (18 languages)
+  - id: iana-tz
+    name: IANA tz database
+    conforms: true
+    evidence: stations.csv time_zone column uses TZ database identifiers, e.g. Europe/Paris
+  - id: iata-airport-codes
+    name: IATA airport codes
+    conforms: true
+    evidence: stations.csv publishes an iata_airport_code column for airport stations
+  - id: odbl
+    name: Open Database License 1.0
+    conforms: true
+    evidence: >-
+      stations.csv is distributed under ODbL — "any modification to this data source must be
+      published" (https://github.com/trainline-eu/stations)
+  - id: urn-syntax
+    name: RFC 8141 URN syntax
+    conforms: true
+    evidence: >-
+      stations.csv normalised_code column emits Trainline-namespaced URNs of the form
+      urn:trainline:public:nloc:<code>
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: partial
+    evidence: >-
+      No OAuth surface is published for the Global API. www.trainlinegroup.com serves a valid
+      OpenID Connect discovery document and JWKS for its Umbraco CMS member login
+      (authorization_code, refresh_token, client_credentials; PKCE S256; private_key_jwt) — corporate
+      website scope only, captured in well-known/.
+  - id: oidc
+    name: OpenID Connect Discovery 1.0
+    conforms: partial
+    evidence: >-
+      https://www.trainlinegroup.com/.well-known/openid-configuration returns 200 application/json
+      (corporate CMS, not the Global API).
+  - id: rfc9457-problem-details
+    name: RFC 9457 Problem Details for HTTP APIs
+    conforms: unknown
+    evidence: No error reference, error catalogue or media type is published for the Global API.
+  - id: rfc9116-security-txt
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence: 404 on every Trainline host; the disclosure contact is published in prose instead.
+  - id: rfc8594-sunset-header
+    name: RFC 8594 Sunset HTTP header
+    conforms: unknown
+    evidence: No versioning or deprecation policy is published for the Global API.
+  - id: llmstxt
+    name: llms.txt
+    conforms: true
+    evidence: >-
+      https://www.thetrainline.com/llms.txt returns 200 (476 KB, consumer site scope) — saved to
+      llms/trainline-llms.txt

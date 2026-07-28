@@ -66,6 +66,30 @@ apis:
   - type: Website
     url: https://tps.thetrainline.com/
 common:
+- type: DomainSecurity
+  url: security/trainline-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/trainline-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.thetrainline.com/terms/security
+- type: TrustCenter
+  url: security/trainline-trust-center.yml
+- type: Compliance
+  url: https://www.thetrainline.com/terms/security
+- type: Conformance
+  url: conformance/trainline-conformance.yml
+- type: WellKnown
+  url: well-known/trainline-well-known.yml
+- type: LLMsTxt
+  url: llms/trainline-llms.txt
+- type: Lifecycle
+  url: lifecycle/trainline-lifecycle.yml
+- type: Packages
+  url: packages/trainline-packages.yml
+- type: Vocabulary
+  url: vocabulary/trainline-station-identifiers.yml
+- type: JsonSchema
+  url: json-schema/trainline-station.json
 - type: Website
   url: https://www.thetrainline.com/
 - type: Website
@@ -94,6 +118,14 @@ common:
   url: https://github.com/trainline-eu/stations
 - type: LinkedIn
   url: https://www.linkedin.com/company/trainline
+- type: Twitter
+  url: https://x.com/thetrainline
+- type: Support
+  url: https://support.thetrainline.com/en/support/home
+- type: Partners
+  url: https://www.thetrainline.com/about-us/partnerships
+- type: Investors
+  url: https://www.trainlinegroup.com/investors
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

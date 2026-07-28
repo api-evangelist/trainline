@@ -1,0 +1,74 @@
+generated: '2026-07-28'
+method: searched
+probe: true
+url: https://www.thetrainline.com/terms/security
+title: Trainline Security Overview
+note: >-
+  Trainline runs no vendor trust portal (no trust.thetrainline.com, no Vanta/Drata/SafeBase
+  page, no security.thetrainline.com). Its published trust surface is a single consumer-facing
+  "Trainline Security Overview" page under the terms tree. It is unusually substantive for that
+  format — it names certifications with certificate numbers, an uptime commitment, the hosting
+  provider and data residency, and a vulnerability reporting address — so it is captured here as
+  the trust-centre equivalent. There is no partner/API-specific trust pack published, and no
+  downloadable evidence (no SOC 2 report, no ISO certificate PDF, no CAIQ/SIG, no subprocessor list).
+certifications:
+  - name: PCI DSS Level 1
+    scope: both as a merchant and as a service provider
+    quote: "Trainline are PCI Level 1 compliant both as a merchant and as a service provider"
+    certificate_number: null
+  - name: ISO/IEC 27001
+    scope: Information Security Management Systems
+    certificate_number: IS 775108
+  - name: ISO 22301
+    scope: Business Continuity Management Systems
+    certificate_number: BCMS 763415
+regulatory:
+  - name: UK GDPR / EU GDPR
+    posture: >-
+      "We're strong advocates of the GDPR and believe that the transparency it delivers around
+      the management and use of personal data is great for our customers, partners and our staff."
+    privacy_policy: https://www.thetrainline.com/terms/privacy
+    data_subject_contact: DPO@thetrainline.com
+  - name: Modern Slavery Act (UK)
+    posture: statement published in the site footer
+not_published:
+  - SOC 2 Type I / Type II
+  - ISO 27017 / ISO 27018
+  - Cyber Essentials / Cyber Essentials Plus
+  - HIPAA
+  - FedRAMP
+  - CSA STAR / CAIQ
+  - subprocessor list
+  - downloadable audit evidence or NDA-gated evidence portal
+infrastructure:
+  hosting: Amazon Web Services (AWS)
+  data_residency: European Economic Area (EEA)
+  quote: >-
+    "We protect our systems and your data within industry-leading, accredited data centres,
+    operated by Amazon Web Services (AWS), which are located in the European Economic Area (EEA)."
+  resilience: >-
+    "Our systems are mirrored across multiple sites (AWS availability zones), each of which have
+    backup power supplies and networks."
+availability_commitment:
+  uptime_target: 99.9%
+  quote: >-
+    "We provide a commitment to our customers that our services will achieve at least 99.9%
+    operational uptime."
+  scope: consumer services as described on the security overview page; no API-specific SLA is published
+  contractual: false
+controls:
+  governance: dedicated Information Security team
+  personnel: BPSS security screening for all staff, contractors and temporary workers
+  training: regular security and privacy training for all staff; annual secure code training for engineers
+  supply_chain: Supplier Security team; compliance screening and contractual security/data-privacy obligations
+  operational: Advanced Web Application Firewall, DDoS protection, bot management, anti-virus/anti-malware, IDS/IPS, 24/7 SOC
+  secure_sdlc: BSIMM-based software security programme; static and dynamic code analysis
+evidence:
+  - source: https://www.thetrainline.com/terms/security
+    status: 200
+    keywords: [pci level 1, iso 27001, iso 22301, gdpr, information security, penetration testing, soc]
+  - source: https://trust.thetrainline.com
+    status: 000
+    note: does not resolve
+  - source: https://www.trainlinegroup.com/security
+    status: 404

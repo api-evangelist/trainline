@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trainline/refs/heads/main/json-schema/trainline-station.json",
+  "title": "Trainline European Station",
+  "description": "One row of the ODbL-licensed European station database Trainline publishes at https://github.com/trainline-eu/stations. Derived by API Evangelist from the real stations.csv header row and the column documentation in the repository README on 2026-07-28; no field has been invented. The source file is semicolon-delimited CSV with booleans encoded as 't'/'f' and empty strings for null; this schema describes the normalised JSON projection of a row.",
+  "x-source": "https://github.com/trainline-eu/stations/blob/master/stations.csv",
+  "x-license": "ODbL-1.0",
+  "x-record-count": 71781,
+  "x-generated": "2026-07-28",
+  "x-method": "derived",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Trainline internal unique station identifier."
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station name as it is locally known."
+    },
+    "slug": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "URL-safe unique identifier; present for suggestable stations."
+    },
+    "uic": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "UIC station code (7 digits)."
+    },
+    "uic8_sncf": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "SNCF's 8-digit UIC variant, i.e. the UIC code plus a checksum digit."
+    },
+    "latitude": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "WGS84 latitude in decimal degrees."
+    },
+    "longitude": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "WGS84 longitude in decimal degrees."
+    },
+    "parent_station_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "id of the meta-station this station is grouped under."
+    },
+    "hub_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "id of the hub this station belongs to."
+    },
+    "country": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 3166-1 alpha-2 country code.",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "time_zone": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "IANA tz database identifier, e.g. Europe/Paris."
+    },
+    "is_city": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station represents a city rather than a single physical station.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "is_main_station": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is the main station of its city.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "is_airport": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station serves an airport.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "is_suggestable": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station may be offered in search suggestions.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "country_hint": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Country should be displayed alongside the name to disambiguate it.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "main_station_hint": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Main-station status should be displayed alongside the name.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "sncf_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by SNCF (France) (sncf_id)."
+    },
+    "sncf_tvs_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by sncf_tvs (sncf_tvs_id)."
+    },
+    "sncf_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on SNCF (France).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "entur_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Entur (Norway) (entur_id)."
+    },
+    "entur_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Entur (Norway).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "db_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Deutsche Bahn (Germany) (db_id)."
+    },
+    "db_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Deutsche Bahn (Germany).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "busbud_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Busbud (busbud_id)."
+    },
+    "busbud_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Busbud.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "distribusion_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Distribusion (distribusion_id)."
+    },
+    "distribusion_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Distribusion.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "flixbus_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by FlixBus / FlixTrain (flixbus_id)."
+    },
+    "flixbus_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on FlixBus / FlixTrain.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "cff_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by CFF/SBB (Switzerland) (cff_id)."
+    },
+    "cff_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on CFF/SBB (Switzerland).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "obb_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by ÖBB (Austria) (obb_id)."
+    },
+    "obb_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on ÖBB (Austria).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "trenitalia_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Trenitalia (Italy) (trenitalia_id)."
+    },
+    "trenitalia_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Trenitalia (Italy).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "trenitalia_rtvt_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by trenitalia_rtvt (trenitalia_rtvt_id)."
+    },
+    "trenord_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Trenord (Lombardy, Italy) (trenord_id)."
+    },
+    "ntv_rtiv_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by ntv_rtiv (ntv_rtiv_id)."
+    },
+    "ntv_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by NTV / Italo (Italy) (ntv_id)."
+    },
+    "ntv_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on NTV / Italo (Italy).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "renfe_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Renfe (Spain) (renfe_id)."
+    },
+    "renfe_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Renfe (Spain).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "cercanias_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Renfe Cercanías (Spain) (cercanias_id)."
+    },
+    "cercanias_hub_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by cercanias_hub (cercanias_hub_id)."
+    },
+    "cercanias_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Renfe Cercanías (Spain).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "atoc_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by ATOC / RDG — CRS code (Great Britain) (atoc_id)."
+    },
+    "atoc_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on ATOC / RDG — CRS code (Great Britain).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "benerail_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by Benerail (Belgium/Netherlands) (benerail_id)."
+    },
+    "benerail_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on Benerail (Belgium/Netherlands).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "westbahn_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by WESTbahn (Austria) (westbahn_id)."
+    },
+    "westbahn_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on WESTbahn (Austria).",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "smt_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Station identifier used by SMT (smt_id)."
+    },
+    "smt_is_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Station is enabled for sale/search on SMT.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "sncf_self_service_machine": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "An SNCF self-service ticket machine is available at this station.",
+      "x-csv-encoding": "t = true, f = false"
+    },
+    "same_as": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "id of the canonical station record when this row duplicates another."
+    },
+    "info:de": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in German (ISO 639-1 'de')."
+    },
+    "info:en": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in English (ISO 639-1 'en')."
+    },
+    "info:es": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Spanish (ISO 639-1 'es')."
+    },
+    "info:fr": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in French (ISO 639-1 'fr')."
+    },
+    "info:it": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Italian (ISO 639-1 'it')."
+    },
+    "info:nb": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Norwegian Bokmål (ISO 639-1 'nb')."
+    },
+    "info:nl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Dutch (ISO 639-1 'nl')."
+    },
+    "info:cs": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Czech (ISO 639-1 'cs')."
+    },
+    "info:da": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Danish (ISO 639-1 'da')."
+    },
+    "info:hu": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Hungarian (ISO 639-1 'hu')."
+    },
+    "info:ja": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Japanese (ISO 639-1 'ja')."
+    },
+    "info:ko": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Korean (ISO 639-1 'ko')."
+    },
+    "info:pl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Polish (ISO 639-1 'pl')."
+    },
+    "info:pt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Portuguese (ISO 639-1 'pt')."
+    },
+    "info:ru": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Russian (ISO 639-1 'ru')."
+    },
+    "info:sv": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Swedish (ISO 639-1 'sv')."
+    },
+    "info:tr": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Turkish (ISO 639-1 'tr')."
+    },
+    "info:zh": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Locally relevant information about the station in Chinese (ISO 639-1 'zh')."
+    },
+    "normalised_code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Cross-source location identifier expressed as a Trainline URN, e.g. urn:trainline:public:nloc:csv1."
+    },
+    "iata_airport_code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "IATA airport code, for stations that serve an airport."
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ],
+  "additionalProperties": false
+}

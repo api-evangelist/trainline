@@ -1,0 +1,184 @@
+generated: '2026-07-28'
+method: derived
+source: >-
+  https://github.com/trainline-eu/stations — the real stations.csv header row and the column
+  documentation in the repository README, read 2026-07-28
+license: ODbL-1.0
+records: 71781
+note: >-
+  This is the identifier vocabulary of European rail and coach distribution as Trainline actually
+  operates it. Rail has no GDS oligopoly and no NDC, so there is no industry-wide passenger-facing
+  location registry; every carrier keeps its own station ids, and an aggregator's real asset is the
+  crosswalk between them. Trainline publishes that crosswalk in the open under ODbL — the single
+  most reusable machine-readable artifact it produces — even though its commercial Global API is
+  entirely gated. Every term below is taken verbatim from a column that exists in stations.csv; none
+  is inferred.
+identifier_systems:
+  - id: trainline-id
+    field: id
+    authority: Trainline
+    scope: internal
+    description: Trainline's own unique station identifier — the join key for every other system here.
+  - id: trainline-urn
+    field: normalised_code
+    authority: Trainline
+    scope: internal
+    format: 'urn:trainline:public:nloc:<code>'
+    description: Cross-source location identifier expressed as an RFC 8141 URN in a Trainline namespace.
+  - id: trainline-slug
+    field: slug
+    authority: Trainline
+    scope: internal
+    description: URL-safe identifier used for suggestable stations.
+  - id: uic
+    field: uic
+    authority: UIC — International Union of Railways
+    scope: international
+    description: The nearest thing European rail has to a universal station code (7 digits).
+  - id: uic8-sncf
+    field: uic8_sncf
+    authority: SNCF
+    scope: national
+    description: SNCF's 8-digit UIC variant — the UIC code plus a checksum digit.
+  - id: atoc-crs
+    field: atoc_id
+    enabled_field: atoc_is_enabled
+    authority: ATOC / Rail Delivery Group
+    scope: Great Britain
+    description: The CRS/three-alpha station code that GB rail retailing runs on.
+  - id: sncf
+    field: sncf_id
+    enabled_field: sncf_is_enabled
+    authority: SNCF
+    scope: France
+  - id: sncf-tvs
+    field: sncf_tvs_id
+    authority: SNCF
+    scope: France
+    description: SNCF TVS (Thalys/ticketing) station identifier.
+  - id: db
+    field: db_id
+    enabled_field: db_is_enabled
+    authority: Deutsche Bahn
+    scope: Germany
+  - id: obb
+    field: obb_id
+    enabled_field: obb_is_enabled
+    authority: ÖBB
+    scope: Austria
+  - id: cff
+    field: cff_id
+    enabled_field: cff_is_enabled
+    authority: CFF / SBB
+    scope: Switzerland
+  - id: trenitalia
+    field: trenitalia_id
+    enabled_field: trenitalia_is_enabled
+    authority: Trenitalia
+    scope: Italy
+  - id: trenitalia-rtvt
+    field: trenitalia_rtvt_id
+    authority: Trenitalia
+    scope: Italy
+  - id: trenord
+    field: trenord_id
+    authority: Trenord
+    scope: Lombardy, Italy
+  - id: ntv
+    field: ntv_id
+    enabled_field: ntv_is_enabled
+    authority: NTV / Italo
+    scope: Italy
+  - id: ntv-rtiv
+    field: ntv_rtiv_id
+    authority: NTV / Italo
+    scope: Italy
+  - id: renfe
+    field: renfe_id
+    enabled_field: renfe_is_enabled
+    authority: Renfe
+    scope: Spain
+  - id: cercanias
+    field: cercanias_id
+    enabled_field: cercanias_is_enabled
+    hub_field: cercanias_hub_id
+    authority: Renfe Cercanías
+    scope: Spain (commuter)
+  - id: entur
+    field: entur_id
+    enabled_field: entur_is_enabled
+    authority: Entur
+    scope: Norway
+  - id: benerail
+    field: benerail_id
+    enabled_field: benerail_is_enabled
+    authority: Benerail
+    scope: Belgium / Netherlands
+  - id: westbahn
+    field: westbahn_id
+    enabled_field: westbahn_is_enabled
+    authority: WESTbahn
+    scope: Austria
+  - id: smt
+    field: smt_id
+    enabled_field: smt_is_enabled
+    authority: SMT
+    scope: undocumented in the source repository
+  - id: flixbus
+    field: flixbus_id
+    enabled_field: flixbus_is_enabled
+    authority: FlixBus / FlixTrain
+    scope: coach and open-access rail
+  - id: busbud
+    field: busbud_id
+    enabled_field: busbud_is_enabled
+    authority: Busbud
+    scope: coach aggregation
+  - id: distribusion
+    field: distribusion_id
+    enabled_field: distribusion_is_enabled
+    authority: Distribusion
+    scope: coach and rail distribution
+  - id: iata
+    field: iata_airport_code
+    authority: IATA
+    scope: international
+    description: Airport code, for stations that serve an airport.
+reference_standards:
+  - {standard: 'ISO 3166-1 alpha-2', field: country, use: country of the station}
+  - {standard: 'IANA tz database', field: time_zone, use: local time zone, example: Europe/Paris}
+  - {standard: 'ISO 639-1', field: 'info:<lang>', use: 18 localised information columns}
+  - {standard: 'WGS 84 decimal degrees', field: 'latitude, longitude', use: geolocation}
+  - {standard: 'RFC 8141 URN', field: normalised_code, use: namespaced cross-source location id}
+  - {standard: 'ODbL 1.0', field: null, use: licence of the whole dataset}
+classification_flags:
+  - {field: is_city, meaning: the row represents a city rather than one physical station}
+  - {field: is_main_station, meaning: the station is the main station of its city}
+  - {field: is_airport, meaning: the station serves an airport}
+  - {field: is_suggestable, meaning: the station may be offered in search suggestions}
+  - {field: country_hint, meaning: display the country alongside the name to disambiguate}
+  - {field: main_station_hint, meaning: display main-station status alongside the name}
+  - {field: sncf_self_service_machine, meaning: an SNCF self-service ticket machine is available}
+graph_fields:
+  - {field: parent_station_id, meaning: groups a station under a meta-station}
+  - {field: hub_id, meaning: groups a station under a hub}
+  - {field: same_as, meaning: points a duplicate row at its canonical station}
+localisation_languages: [de, en, es, fr, it, nb, nl, cs, da, hu, ja, ko, pl, pt, ru, sv, tr, zh]
+source_datasets:
+  - OpenStreetMap
+  - SNCF OpenData
+  - GeoNames
+  - Digitraffic.fi
+  - OpenTransportData.swiss
+  - admin.ch
+downstream_reuse:
+  - name: reStations
+    url: https://github.com/mainmatter/reStations
+    description: >-
+      Third-party implementation of the OSDM API specification's Places API backed by this dataset.
+      Not a Trainline project — evidence that the open station data, not the gated Global API, is
+      what the ecosystem actually builds on.
+  - name: trainline-stations (npm)
+    url: https://www.npmjs.com/package/trainline-stations
+    description: Third-party npm packaging of the dataset (author juliuste).
+schema: json-schema/trainline-station.json

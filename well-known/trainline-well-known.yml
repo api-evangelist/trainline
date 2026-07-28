@@ -1,0 +1,96 @@
+generated: '2026-07-28'
+method: searched
+source: live probes of every Trainline host recorded in apis.yml
+note: >-
+  Trainline publishes no /.well-known/ discovery surface for its commercial Global API.
+  api.thetrainline.com answers every path with HTTP 401 and a Basic auth challenge, so no
+  anonymous discovery document is reachable there. The only /.well-known/ documents that
+  return real JSON anywhere on a Trainline domain belong to the Umbraco CMS that runs the
+  corporate site www.trainlinegroup.com (member authentication for gated investor/press
+  content) — they are recorded here because they are genuinely published, NOT because they
+  describe the Global API. The Umbraco Content Delivery API itself (/umbraco/delivery/api/v1/content)
+  and its Swagger endpoints return the site's HTML 404 page, i.e. the content API is disabled.
+hosts_probed:
+  - https://api.thetrainline.com
+  - https://tps.thetrainline.com
+  - https://www.thetrainline.com
+  - https://www.trainlinegroup.com
+documents:
+  - host: https://www.trainlinegroup.com
+    path: /.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: trainline-openid-configuration.json
+    spec: OpenID Connect Discovery 1.0
+    scope: corporate CMS member login (Umbraco), not the Global API
+  - host: https://www.trainlinegroup.com
+    path: /.well-known/jwks
+    status: 200
+    content_type: application/json
+    file: trainline-jwks.json
+    spec: RFC 7517 JSON Web Key Set
+    scope: signing key for the Umbraco member tokens above
+  - host: https://api.thetrainline.com
+    path: /.well-known/security.txt
+    status: 404
+  - host: https://api.thetrainline.com
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: https://api.thetrainline.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: https://api.thetrainline.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: https://api.thetrainline.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: https://tps.thetrainline.com
+    path: /.well-known/security.txt
+    status: 404
+  - host: https://tps.thetrainline.com
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: https://tps.thetrainline.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: https://tps.thetrainline.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: https://tps.thetrainline.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: https://www.thetrainline.com
+    path: /.well-known/security.txt
+    status: 404
+  - host: https://www.thetrainline.com
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: https://www.thetrainline.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: https://www.thetrainline.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: https://www.thetrainline.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: https://www.trainlinegroup.com
+    path: /.well-known/security.txt
+    status: 404
+  - host: https://www.trainlinegroup.com
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: https://www.trainlinegroup.com
+    path: /.well-known/api-catalog
+    status: 404
+  - host: https://www.trainlinegroup.com
+    path: /.well-known/ai-plugin.json
+    status: 404
+security_txt:
+  published: false
+  note: >-
+    No RFC 9116 security.txt on any Trainline host. Trainline does publish a vulnerability
+    reporting address and process in prose at https://www.thetrainline.com/terms/security —
+    captured in security/trainline-vulnerability-disclosure.yml. Publishing that same
+    contact as /.well-known/security.txt would be a one-line fix.

@@ -47,6 +47,18 @@ Trainline Partner Solutions' wholesale rail and coach distribution API, sold to 
 
 ## Common Properties
 
+- [Domain Security](security/trainline-domain-security.yml)
+- [Vulnerability Disclosure](security/trainline-vulnerability-disclosure.yml)
+- [Security](https://www.thetrainline.com/terms/security)
+- [Trust Center](security/trainline-trust-center.yml)
+- [Compliance](https://www.thetrainline.com/terms/security)
+- [Conformance](conformance/trainline-conformance.yml)
+- [Well-Known](well-known/trainline-well-known.yml)
+- [llms.txt](llms/trainline-llms.txt)
+- [Lifecycle](lifecycle/trainline-lifecycle.yml)
+- [Packages](packages/trainline-packages.yml)
+- [Vocabulary](vocabulary/trainline-station-identifiers.yml)
+- [JSON Schema](json-schema/trainline-station.json)
 - [Website](https://www.thetrainline.com/)
 - [Website](https://www.trainlinegroup.com/)
 - [Portal](https://tps.thetrainline.com/)
@@ -61,6 +73,40 @@ Trainline Partner Solutions' wholesale rail and coach distribution API, sold to 
 - [GitHub Organization](https://github.com/trainline-eu)
 - [GitHub Repository](https://github.com/trainline-eu/stations)
 - [LinkedIn](https://www.linkedin.com/company/trainline)
+- [Twitter](https://x.com/thetrainline)
+- [Support](https://support.thetrainline.com/en/support/home)
+- [Partners](https://www.thetrainline.com/about-us/partnerships)
+- [Investors](https://www.trainlinegroup.com/investors)
+
+## Enrichment (2026-07-28)
+
+Contract discovery found **no machine-readable contract** for the Global API. `/openapi.json`,
+`/openapi.yaml`, `/swagger.json`, `/v1/openapi.json` and `/api-docs` were probed on
+`api.thetrainline.com` (HTTP 401 Basic challenge on every path), `tps.thetrainline.com`,
+`www.thetrainline.com` and `www.trainlinegroup.com` (404). No GraphQL surface, no MCP server, no
+AsyncAPI, no webhook catalogue, no Postman workspace (Postman search returns 0), no SDK in any
+registry, no status page, no changelog, no sandbox. Those absences are recorded as data, not
+fabricated around.
+
+What Trainline **does** publish, and what was harvested:
+
+| Artifact | Method | What it is |
+| --- | --- | --- |
+| [`llms/trainline-llms.txt`](llms/trainline-llms.txt) | searched | Real `/llms.txt` (476 KB) served at `www.thetrainline.com` — consumer-site scope |
+| [`well-known/`](well-known/trainline-well-known.yml) | searched | Only live `/.well-known/` JSON on any Trainline host: OIDC discovery + JWKS for the Umbraco CMS behind `www.trainlinegroup.com` (corporate site, **not** the Global API) |
+| [`security/trainline-vulnerability-disclosure.yml`](security/trainline-vulnerability-disclosure.yml) | searched | `security-external@thetrainline.com`, explicit "no payment for reporting vulnerabilities"; `hackerone.com/trainline` is an *unclaimed community page*, not a Trainline programme |
+| [`security/trainline-trust-center.yml`](security/trainline-trust-center.yml) | searched | PCI DSS Level 1 (merchant *and* service provider), ISO 27001 `IS 775108`, ISO 22301 `BCMS 763415`, AWS/EEA residency, 99.9% uptime commitment |
+| [`security/trainline-domain-security.yml`](security/trainline-domain-security.yml) | probed | TLS 1.3 + HSTS on the consumer and corporate hosts (TLS 1.2 on `tps.`), DNSSEC on `thetrainline.com`, DMARC `p=reject`, no CAA anywhere |
+| [`conformance/trainline-conformance.yml`](conformance/trainline-conformance.yml) | searched | Every standard claimed or observable — including **no OSDM claim**, despite third parties building OSDM Places APIs on Trainline's open station data |
+| [`lifecycle/trainline-lifecycle.yml`](lifecycle/trainline-lifecycle.yml) | searched | 99.9% uptime commitment, 12-week integration; no versioning policy, no deprecation policy, no status page |
+| [`packages/trainline-packages.yml`](packages/trainline-packages.yml) | searched | **Zero** API client libraries in any registry; the only first-party packages are front-end/infra tooling |
+| [`json-schema/trainline-station.json`](json-schema/trainline-station.json) | derived | 76-property JSON Schema for the ODbL station record, derived from the real `stations.csv` header + README |
+| [`vocabulary/trainline-station-identifiers.yml`](vocabulary/trainline-station-identifiers.yml) | derived | The station-identifier crosswalk — UIC, ATOC/CRS, SNCF, DB, ÖBB, CFF, Trenitalia, NTV, Renfe, Entur, Benerail, WESTbahn, FlixBus, Distribusion, Busbud, IATA |
+
+The finding worth keeping: Trainline's most reusable machine-readable asset is not its API, it is
+the ODbL station-identifier crosswalk it gives away — 71,781 records mapping its internal ids to
+every carrier's id system in European rail. The commercial contract is closed; the identity layer
+underneath it is open.
 
 ## Switching Cost
 
