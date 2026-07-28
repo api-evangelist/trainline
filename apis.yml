@@ -1,0 +1,99 @@
+aid: trainline
+url: https://raw.githubusercontent.com/api-evangelist/trainline/refs/heads/main/apis.yml
+name: Trainline
+kind: company
+description: >-
+  Trainline plc is Europe's leading independent rail and coach ticket retailer and distribution
+  platform, headquartered in London and listed on the London Stock Exchange, with the United Kingdom
+  as its home market. It aggregates fares, inventory and real-time journey data from 270+ rail and
+  coach carriers across more than 40 countries and resells that content through its own consumer app
+  and website, through Trainline for Business, and — via Trainline Solutions / Trainline Partner
+  Solutions — as wholesale distribution to other travel sellers through its Global API, Agent Tool
+  and White Label products. In distribution terms Trainline is an aggregator-reseller sitting between
+  the carriers and the traveller: rail has no GDS-equivalent oligopoly and no NDC, so Trainline is
+  itself the intermediation layer, holding the carrier connections, the ticket-issuing accreditation
+  and the settlement relationships that a competitor would otherwise have to rebuild carrier by
+  carrier. Its API posture is honestly gated: the Global API is publicly described as "a modern,
+  intuitive RESTful API" on tps.thetrainline.com but there is no developer portal, no public
+  reference, no sandbox and no OpenAPI — access requires a commercial agreement reached through a
+  sales conversation, and in Great Britain a retailer also needs Rail Delivery Group / Rail
+  Settlement Plan third-party retailer accreditation and a bond. The one genuinely open artifact is
+  the ODbL-licensed European station database Trainline publishes on GitHub, which maps its internal
+  station ids to UIC codes, ATOC/CRS codes and carrier-specific ids.
+image: https://tps.thetrainline.com/apple-touch-icon.png
+tags:
+- Travel
+- Rail
+- United Kingdom
+- Europe
+- Booking
+- Ticketing
+- Distribution
+- OTA
+- Corporate Travel
+created: '2026-07-28'
+modified: '2026-07-28'
+specificationVersion: '0.19'
+apis:
+- aid: trainline:trainline-global-api
+  name: Trainline Global API
+  description: >-
+    Trainline Partner Solutions' wholesale rail and coach distribution API, sold to travel sellers,
+    OTAs, TMCs and corporate booking tools. Trainline publicly describes it as "a modern, intuitive
+    RESTful API built on the most up to date tech stack" covering search and browse (quoted at "600
+    searches per second"), booking and ticketing, payment in 10 currencies including on-account,
+    real-time information on delays, disruption and platform changes, and aftersales — "cancellations
+    within an hour, exchanges, changes of journey and refunds" — plus market-specific features such
+    as UK SplitSave and seat maps, across ">44.8k stations connected". No public documentation, API
+    reference, sandbox, machine-readable specification or self-serve signup is published; the only
+    onboarding path is "Get in touch", with a stated average integration time of 12 weeks and
+    Trainline-assisted carrier accreditation. No baseURL is recorded here because none is published;
+    the host api.thetrainline.com resolves but returns HTTP 401 with a Basic auth challenge on every
+    path and is not documented as the Global API endpoint.
+  tags:
+  - Rail
+  - Booking
+  - Ticketing
+  - Distribution
+  - Travel
+  properties:
+  - type: Documentation
+    url: https://tps.thetrainline.com/our-products/global-api/
+  - type: Documentation
+    url: https://www.thetrainline.com/solutions/api
+  - type: Support
+    url: https://tps.thetrainline.com/partner-support/
+  - type: Website
+    url: https://tps.thetrainline.com/
+common:
+- type: Website
+  url: https://www.thetrainline.com/
+- type: Website
+  url: https://www.trainlinegroup.com/
+- type: Portal
+  url: https://tps.thetrainline.com/
+- type: Documentation
+  url: https://tps.thetrainline.com/our-products/
+- type: Support
+  url: https://tps.thetrainline.com/partner-support/
+- type: TermsOfService
+  url: https://www.thetrainline.com/terms
+- type: TermsOfService
+  url: https://tps.thetrainline.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.thetrainline.com/terms/privacy
+- type: Blog
+  url: https://tps.thetrainline.com/blog-and-media/
+- type: Blog
+  url: https://media.trainline.com/
+- type: GitHubOrganization
+  url: https://github.com/trainline
+- type: GitHubOrganization
+  url: https://github.com/trainline-eu
+- type: GitHubRepository
+  url: https://github.com/trainline-eu/stations
+- type: LinkedIn
+  url: https://www.linkedin.com/company/trainline
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

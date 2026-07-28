@@ -1,0 +1,307 @@
+aid: trainline
+name: Trainline
+review:
+  question: Does Trainline publish a public, self-serve developer surface for its rail distribution API, and what would it cost a customer to leave?
+  answer: false
+  date: '2026-07-28'
+  reviewer: API Evangelist
+  bootstrap: true
+findings:
+  summary: |
+    Trainline plc (LSE-listed, London HQ, home market United Kingdom) is Europe's
+    largest independent rail and coach retailer and, through Trainline Solutions /
+    Trainline Partner Solutions (TPS), a wholesale distributor of rail content to
+    other travel sellers. It publicly markets a "Global API" at
+    https://tps.thetrainline.com/our-products/global-api/ (HTTP 200) and again at
+    https://www.thetrainline.com/solutions/api (HTTP 200), but there is NO public
+    developer portal, NO API reference, NO sandbox, NO published base URL, NO
+    machine-readable specification and NO self-serve signup. Every documented
+    onboarding path terminates in a sales conversation
+    (https://tps.thetrainline.com/get-in-touch/, HTTP 200) or the corporate sales
+    mailbox Corporate.Sales@thetrainline.com cited on the solutions page.
+    The only real machine-consumable artifact Trainline publishes is open DATA, not
+    an API: the ODbL-licensed European station database at
+    https://github.com/trainline-eu/stations (HTTP 200, actively maintained,
+    last commit 2026-07-27).
+  developerPortal:
+    url: https://tps.thetrainline.com/
+    httpStatus: 200
+    confirmed: false
+    note: |
+      tps.thetrainline.com is a marketing site for Trainline Partner Solutions, not a
+      developer portal. It has no docs area, no console, no key issuance, no sandbox
+      and no login. robots.txt is "Allow: /" and its declared sitemap
+      (https://tps.thetrainline.com/xmlsitemap) returned no <loc> entries when parsed,
+      so no hidden docs tree was discoverable.
+probes:
+  - url: https://www.thetrainline.com/
+    status: 200
+    note: Consumer booking site. Footer links to Trainline Partner Solutions; no developer link.
+  - url: https://www.trainlinegroup.com/
+    status: 200
+    note: Corporate/investor site. "Europe's leading independent rail platform", "more than 40 countries", "270+ rail and coach companies", ~990 employees, three divisions (UK Consumer, International Consumer, Trainline Solutions). Registered England & Wales No. 11961132, 1 Stonecutter Street, London EC4A 4AH.
+  - url: https://developer.thetrainline.com
+    status: 000
+    note: Does not resolve.
+  - url: https://developers.thetrainline.com
+    status: 000
+    note: Does not resolve.
+  - url: https://docs.thetrainline.com
+    status: 000
+    note: Does not resolve.
+  - url: https://partner.thetrainline.com
+    status: 000
+    note: Does not resolve.
+  - url: https://portal.thetrainline.com
+    status: 000
+    note: Does not resolve.
+  - url: https://sandbox.thetrainline.com
+    status: 000
+    note: Does not resolve.
+  - url: https://api.thetrainline.com/
+    status: 401
+    note: |
+      Resolves. Served by CloudFront and returns HTTP 401 with
+      'WWW-Authenticate: Basic realm="https://api.thetrainline.com/"' and an empty
+      body on every path probed. This is a real, fully gated host but it is NOT
+      documented anywhere public as the Global API endpoint, so it is deliberately
+      NOT recorded as a baseURL in apis.yml.
+  - url: https://api.thetrainline.com/openapi.json
+    status: 401
+  - url: https://api.thetrainline.com/swagger.json
+    status: 401
+  - url: https://api.thetrainline.com/.well-known/openid-configuration
+    status: 404
+  - url: https://www.thetrainline.com/developers
+    status: 404
+  - url: https://www.thetrainline.com/api
+    status: 404
+  - url: https://www.thetrainline.com/docs
+    status: 404
+  - url: https://www.thetrainline.com/openapi.json
+    status: 404
+  - url: https://www.thetrainline.com/swagger.json
+    status: 404
+  - url: https://www.thetrainline.com/.well-known/apis.json
+    status: 404
+  - url: https://www.thetrainline.com/.well-known/security.txt
+    status: 404
+  - url: https://www.thetrainline.com/.well-known/ai-plugin.json
+    status: 404
+  - url: https://tps.thetrainline.com/
+    status: 200
+  - url: https://tps.thetrainline.com/our-products/
+    status: 200
+    note: Four products — Global API, Agent Tool, White Label, Business Travel Tools ("Trusted by over 38,000 companies in UK and Europe").
+  - url: https://tps.thetrainline.com/our-products/global-api/
+    status: 200
+    note: Primary public description of the API product. No endpoints, no schemas, no auth details.
+  - url: https://tps.thetrainline.com/our-products/agent-tools/
+    status: 200
+  - url: https://tps.thetrainline.com/our-products/white-label/
+    status: 200
+  - url: https://tps.thetrainline.com/our-products/business-accounts/
+    status: 200
+  - url: https://tps.thetrainline.com/partner-support/
+    status: 200
+    note: Lists "detailed documentation with sample scripts" and "carrier accreditation" support, but publishes no documentation URL, portal link, login or sandbox.
+  - url: https://tps.thetrainline.com/get-in-touch/
+    status: 200
+  - url: https://tps.thetrainline.com/openapi.json
+    status: 404
+  - url: https://tps.thetrainline.com/swagger.json
+    status: 404
+  - url: https://tps.thetrainline.com/api-docs
+    status: 404
+  - url: https://tps.thetrainline.com/.well-known/security.txt
+    status: 404
+  - url: https://tps.thetrainline.com/terms-and-conditions/
+    status: 200
+    note: Website-use policy only — acceptable use, IP, liability. Contains NO contract length, minimum term, exclusivity, termination notice, data ownership, data export, revocation or fee terms.
+  - url: https://www.thetrainline.com/solutions/api
+    status: 200
+    note: '"270 carriers. 45 countries." Contact route is Corporate.Sales@thetrainline.com. No docs, sandbox or keys mentioned.'
+  - url: https://www.thetrainline.com/terms/privacy
+    status: 200
+    note: GDPR rights section; portability exercised by emailing DPO@thetrainline.com. Controllers named as Trainline.com Limited and Trainline SAS.
+  - url: https://github.com/trainline
+    status: 200
+    note: "'trainline engineering', 23 public repos — all internal tooling (Environment Manager, react-skeletor, webpack-bundle-delta, roast-lambda). No API specs, no SDK for the Global API."
+  - url: https://github.com/trainline-eu
+    status: 200
+    note: "'Trainline EU', 46 public repos — mostly forks of Ruby/Ansible/Docker upstreams, plus the stations dataset and csa-challenge."
+  - url: https://github.com/trainline-eu/stations
+    status: 200
+    note: The one substantive open artifact. ODbL-licensed CSV of European stations with cross-system identifier mapping. Actively maintained (last update 2026-07-27).
+  - url: https://engineering.thetrainline.com/
+    status: 403
+    note: Engineering blog linked from the GitHub org profile; returns 403 to automated fetch.
+  - url: https://media.trainline.com/
+    status: 200
+  - url: https://investors.thetrainline.com/
+    status: 200
+  - url: https://www.linkedin.com/company/trainline
+    status: 200
+switchingCost:
+  interfaceShape:
+    value: proprietary-documented
+    standardNamed: >-
+      No open distribution standard is referenced anywhere in Trainline's public material.
+      Rail has no equivalent of IATA NDC in production here: Trainline's own description is
+      "a modern, intuitive RESTful API built on the most up to date tech stack" that "meets
+      industry best-practise security standards" — a shape unique to Trainline, not a
+      standard any competitor implements. No OpenTravel/OTA, no OSDM (the UIC Open Sales
+      and Distribution Model), no GTFS, no UIC 90918-x messaging, no NDC reference appears
+      on tps.thetrainline.com or thetrainline.com/solutions/api. Classified
+      proprietary-documented rather than proprietary-undocumented because Trainline does
+      publish a functional description of the API's segmentation (search/browse, booking,
+      ticketing, payment, real-time, aftersales) and states that "detailed documentation
+      with sample scripts" is provided post-contract — the documentation exists, it is
+      simply not public.
+    evidence:
+      - https://tps.thetrainline.com/our-products/global-api/
+      - https://tps.thetrainline.com/partner-support/
+  secondSource:
+    value: alternatives-with-migration
+    alternativesConsidered: >-
+      European rail aggregation is genuinely contested, so a Trainline API customer is not
+      captive to Trainline — but nothing is drop-in, because every one of these vendors
+      exposes its own proprietary REST shape rather than a shared standard. Alternatives
+      considered: SilverRail (rail distribution platform, Expedia-backed), Amadeus Rail and
+      Sabre's rail content via the legacy GDS route, Distribusion (bus/rail aggregation —
+      notably a carrier Trainline itself maps ids for in its stations dataset), Omio,
+      Rail Europe, Benerail, Sqills S3 Passenger on the carrier side, and going direct to
+      each carrier's own retail API (SNCF Connect, Deutsche Bahn, Trenitalia, Renfe, ÖBB,
+      Eurostar). Direct-to-carrier is the true "no intermediary" option and it is exactly
+      the work Trainline exists to absorb — replacing Trainline that way means negotiating,
+      integrating and settling with each of 270+ carriers separately. Moving to a rival
+      aggregator is a full re-integration project against a different proprietary contract,
+      with Trainline's own stated 12-week integration time as a fair floor estimate for the
+      effort.
+  exitPath:
+    value: export-on-request
+    operationCited: >-
+      No export, dump, bulk or reporting operation is published for the Global API, because
+      no API operations at all are published. The only verifiable data-portability
+      commitment is consumer-side and manual: the privacy policy states "You can ask us to
+      transfer this information to another data controller in an easy-to-read manner" and
+      "You can ask us for copies of your data. This right always applies but there are some
+      exceptions", exercised by emailing DPO@thetrainline.com or writing to Data Protection
+      Officer, PO Box 23972, Edinburgh, EH3 5DA. That is a GDPR subject-access route for
+      individual travellers, not a partner data-export mechanism. For a B2B API partner
+      there is no published exit path whatsoever.
+    source: https://www.thetrainline.com/terms/privacy
+  identifierPortability:
+    value: >-
+      Mixed, and unusually good for the sector on the reference-data side. Trainline
+      publishes its station identifier crosswalk as open data under ODbL at
+      github.com/trainline-eu/stations: an internal opaque `id` and `slug`, mapped against
+      the shared industry identifier `uic` (and `uic8_sncf`), ISO 3166-1 alpha-2 country
+      codes, IANA time zones, a `normalised_code` used "to identify if 2 locations across
+      multiple synchronised sources represent the same location", and per-carrier ids —
+      `atoc_id` (explicitly "CRS codes", with NLC and TIPLOC not mapped and the column
+      "largely unmaintained"), `sncf_id`, `db_id`, `entur_id`, `cff_id`, `obb_id`,
+      `trenitalia_id`, `trenord_id`, `ntv_id`, `renfe_id`, `cercanias_id`, `benerail_id`,
+      `westbahn_id`, `flixbus_id`, `busbud_id`, `distribusion_id`. So LOCATION identity is
+      portable and openly licensed. TRANSACTION identity is not: no booking reference,
+      order id, ticket id, fare id or customer id scheme is published anywhere, and rail
+      has no PNR/record-locator equivalent that is standardised across retailers the way
+      an airline PNR is. A partner's bookings therefore hang on undisclosed Trainline
+      order identifiers.
+    source: https://github.com/trainline-eu/stations
+  contractualLockIn:
+    value: nothing-published
+    verbatim: >-
+      Nothing verifiable. https://tps.thetrainline.com/terms-and-conditions/ (HTTP 200) is a
+      website acceptable-use and IP policy only — it contains no minimum term, no
+      exclusivity, no termination notice, no revocation clause, no segment or transaction
+      fee, and no data-ownership or export language. No partner agreement, API licence,
+      rate card or SLA is published at any probed URL. The only commercially relevant
+      figures Trainline states publicly are operational, not contractual: an "average
+      integration time across clients" of 12 weeks and support that includes "carrier
+      accreditation". Commercial terms are therefore negotiated privately and cannot be
+      cited. Separately and verifiably, any party retailing National Rail tickets in Great
+      Britain — Trainline included, and any partner that wanted to bypass it — must pass
+      Rail Delivery Group / Rail Settlement Plan third-party retailer accreditation, agree
+      RSP licensing terms, have its Ticket Issuing System accredited, complete a pilot, and
+      post a bond or guarantee maintained for as long as it sells rail products. That is a
+      regulatory barrier around Trainline's GB position, not a Trainline contract term, and
+      it is recorded here because it is the real reason the second source is expensive.
+    sources:
+      - https://tps.thetrainline.com/terms-and-conditions/
+      - https://www.raildeliverygroup.com/our-services/working-with-rdg/ticketing-settlement.html
+      - https://www.raildeliverygroup.com/our-services/retail-commercial/how-to-become-a-retailer/settlement-and-bonding.html
+  accessGate:
+    value: commercial-agreement
+    whatADeveloperMustSignOrAccredit: >-
+      A commercial partner agreement with Trainline Partner Solutions, reached only through
+      https://tps.thetrainline.com/get-in-touch/ or Corporate.Sales@thetrainline.com. There
+      is no signup form, no free tier, no trial, no sandbox and no key issuance of any kind.
+      Post-contract the partner receives "detailed documentation with sample scripts", a
+      kick-off workshop, a self-serve support portal and named account management, with a
+      stated average integration time of 12 weeks. Trainline additionally provides "carrier
+      accreditation" support, which is the tell: the partner is being walked through
+      third-party accreditation with the underlying carriers/settlement schemes, not just
+      handed a key.
+    evidence:
+      - https://tps.thetrainline.com/get-in-touch/
+      - https://tps.thetrainline.com/partner-support/
+      - https://www.thetrainline.com/solutions/api
+  distributionModel:
+    value: aggregator-reseller
+    note: >-
+      Trainline is the intermediary, not a party intermediated by one. It holds direct
+      retail relationships with 270+ rail and coach carriers across 45 countries, resells
+      that content to consumers (UK Consumer and International Consumer divisions) and
+      wholesales it to other travel sellers, TMCs and corporate booking tools through
+      Trainline Solutions. In the GDS analogy it occupies the GDS position for European
+      rail — with the important difference that European rail distribution is a contested
+      market with several aggregators rather than a three-firm oligopoly.
+  ndcPosture:
+    value: not-applicable
+    note: >-
+      Not an airline. IATA NDC governs airline offer/order distribution and has no bearing
+      on Trainline's rail and coach business. The rail-sector analogue would be the UIC's
+      OSDM (Open Sales and Distribution Model); no OSDM conformance, version or
+      certification claim appears anywhere in Trainline's public material, and none is
+      asserted here.
+  summaryOfWhatLeavingCosts: >-
+    A Trainline Global API partner leaving would have to: re-integrate against a different
+    proprietary REST contract (SilverRail, Distribusion, Omio, Amadeus/Sabre rail, or
+    direct-to-carrier), re-map every booking to a new order-identifier scheme with no
+    published export of the old one, re-negotiate settlement and — for National Rail
+    content in Great Britain — obtain or retain RDG/RSP third-party retailer accreditation
+    with a bond. Only the station reference data travels for free, because Trainline
+    deliberately open-licensed it under ODbL. Twelve weeks of integration is the vendor's
+    own stated floor.
+artifacts:
+  openapi: []
+  openapiHarvested: false
+  note: >-
+    No OpenAPI, Swagger, Postman collection, AsyncAPI, GraphQL schema or any other
+    machine-readable API contract was found at any probed URL. openapi/ is intentionally
+    absent rather than populated with anything inferred. The stations dataset is real but
+    it is open DATA under ODbL, not an API description, so it is referenced by URL in
+    apis.yml common[] and not copied into this repo.
+sources:
+  - url: https://tps.thetrainline.com/our-products/global-api/
+    type: Documentation
+    note: Public product description of the Global API — capabilities, scale figures, RESTful claim.
+  - url: https://tps.thetrainline.com/partner-support/
+    type: Support
+    note: Onboarding and support model; 12-week integration; carrier accreditation support; no public docs URL.
+  - url: https://www.thetrainline.com/solutions/api
+    type: Documentation
+    note: '"270 carriers. 45 countries."; contact route Corporate.Sales@thetrainline.com.'
+  - url: https://tps.thetrainline.com/terms-and-conditions/
+    type: TermsOfService
+    note: Website-use policy only; no commercial or API terms.
+  - url: https://www.thetrainline.com/terms/privacy
+    type: PrivacyPolicy
+    note: GDPR portability and access rights, exercised by email to DPO@thetrainline.com.
+  - url: https://github.com/trainline-eu/stations
+    type: GitHubRepository
+    note: ODbL station database and identifier crosswalk (UIC, ATOC/CRS, per-carrier ids).
+  - url: https://www.trainlinegroup.com/
+    type: Website
+    note: Corporate facts, divisions, scale.
