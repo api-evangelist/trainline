@@ -66,6 +66,9 @@ apis:
   - type: Website
     url: https://tps.thetrainline.com/
 common:
+- type: License
+  name: ODbL-1.0
+  url: https://github.com/trainline-eu/stations/blob/master/LICENSE
 - type: DomainSecurity
   url: security/trainline-domain-security.yml
 - type: VulnerabilityDisclosure
