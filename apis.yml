@@ -20,6 +20,19 @@ description: >-
   Settlement Plan third-party retailer accreditation and a bond. The one genuinely open artifact is
   the ODbL-licensed European station database Trainline publishes on GitHub, which maps its internal
   station ids to UIC codes, ATOC/CRS codes and carrier-specific ids.
+deliveryModel:
+  model: saas
+  license: ODbL-1.0
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - license
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://tps.thetrainline.com/apple-touch-icon.png
 tags:
 - Travel
@@ -66,6 +79,10 @@ apis:
   - type: Website
     url: https://tps.thetrainline.com/
 common:
+- type: IssueTracker
+  url: https://github.com/trainline-eu/stations/issues
+- type: ContributionGuide
+  url: https://github.com/trainline-eu/stations/blob/master/CONTRIBUTING.md
 - type: License
   name: ODbL-1.0
   url: https://github.com/trainline-eu/stations/blob/master/LICENSE
